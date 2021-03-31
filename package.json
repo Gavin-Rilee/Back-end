@@ -4,14 +4,16 @@
     "description": "Anywhere-Fitness-Back-End",
     "main": "index.js",
     "scripts": {
+        "bundle": "knex migrate:rollback && knex migrate:latest && knex seed:run",
         "start": "node index.js",
         "server": "nodemon index.js",
         "migrate": "knex migrate:latest",
         "rollback": "knex migrate:rollback",
         "seed": "knex seed:run",
-        "migrateh": "heroku run knex migrate:latest -a anywhere-fitness-tt75",
-        "rollbackh": "heroku run knex migrate:rollback -a anywhere-fitness-tt75",
-        "seedh": "heroku run knex seed:run -a anywhere-fitness-tt75",
+        "hbundle": "npm run rollbackh && npm run migrateh && npm run seedh",
+        "migrateh": "heroku run knex migrate:latest -a tt75-anywhere-fitness",
+        "rollbackh": "heroku run knex migrate:rollback -a tt75-anywhere-fitness",
+        "seedh": "heroku run knex seed:run -a tt75-anywhere-fitness",
         "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand"
     },
     "repository": {
