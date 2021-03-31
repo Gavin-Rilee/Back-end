@@ -1,12 +1,21 @@
 // Update with your config settings.
+const pg = require('pg')
+
+if(process.env.DATABASE_URL) {
+  pg.defaults.ssl - { rejectUnauthorized: false }
+}
+
+const sharedConfig = {
+  client:'pg',
+  migrations: { directory: './migrations' },
+  seed: { directory: './seeds' }
+}
 
 module.exports = {
 
   development: {
-    client: 'sqlite3',
-    connection: {
-      filename: './dev.sqlite3'
-    }
+    ...sharedConfig,
+    connection: process.env.DEV_DATABASE_URL
   },
 
   staging: {
@@ -28,7 +37,7 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
+      database: 'dev',
       user:     'username',
       password: 'password'
     },
@@ -40,5 +49,4 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
-
 };

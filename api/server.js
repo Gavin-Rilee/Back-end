@@ -24,12 +24,4 @@ server.get("/", (req, res) => {
   res.json({ api: "up" })
 })
 
-server.use((err, req, res, next) => {
-  return res.status(500).json({ 
-    error: "There was a problem communicating with the server",
-    message: err.message,
-    stack: err.stack
-   })
-})
-
 module.exports = server
