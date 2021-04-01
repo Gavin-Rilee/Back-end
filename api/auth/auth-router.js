@@ -1,6 +1,6 @@
 const router = require("express").Router()
 const bcryptjs = require("bcryptjs")
-const db = require("../../data/db-config")
+// const db = require("../../data/db-config")
 
 const Users = require("../users/model")
 
@@ -44,7 +44,7 @@ router.post("/login", async (req, res, next) => {
       const user = await Users.findBy({ username })
       if (user && bcryptjs.compareSync(password, user.password)) {
         const token = generateToken(user)        
-        return res.status(200).json({ message: `Welcome, ${username}`, localToken: token /*, user */})
+        return res.status(200).json({ message: `Welcome, ${username}`, secret: token /*, user */})
       } else {
         res.json("Invalid username or password")
       }
