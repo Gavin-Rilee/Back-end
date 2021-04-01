@@ -16,12 +16,12 @@ const user_classesRouter = require("./user_classes/router")
 const restricted = require("./auth/auth-restricted")
 
 server.use("/api/auth", authRouter)
-server.use("/api/users", restricted, usersRouter)
-server.use("/api/classes", restricted, classesRouter)
-server.use("/api/user_classes", restricted, user_classesRouter)
+server.use("/api/users", /*restricted,*/ usersRouter)
+server.use("/api/classes", /*restricted,*/ classesRouter)
+server.use("/api/user_classes", /*restricted,*/ user_classesRouter)
 
 server.get("/", (req, res) => {
-  res.json({ api: "up" })
+  res.json({ Hello: "Chance, Hans and Gavin" })
 })
 
 module.exports = server
