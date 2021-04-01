@@ -1,5 +1,5 @@
 {
-    "name": "Anywhere-Fitness",
+    "name": "anywhere-fitness",
     "version": "1.0.0",
     "description": "Anywhere-Fitness-Back-End",
     "main": "index.js",
@@ -14,7 +14,8 @@
         "migrateh": "heroku run knex migrate:latest -a tt75-anywhere-fitness",
         "rollbackh": "heroku run knex migrate:rollback -a tt75-anywhere-fitness",
         "seedh": "heroku run knex seed:run -a tt75-anywhere-fitness",
-        "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand"
+        "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand",
+        "deploy": "git push heroku main"
     },
     "repository": {
         "type": "git",
