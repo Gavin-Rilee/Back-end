@@ -38,7 +38,7 @@ router.post("/register", async (req, res, next) => {
 router.post("/login", async (req, res, next) => {
   const credentials = req.body
 
-  if (isValidLogin(credentials)) {
+  // if (isValidLogin(credentials)) {
     try {
       const { username, password } = credentials
       const user = await Users.findBy({ username })
@@ -51,9 +51,9 @@ router.post("/login", async (req, res, next) => {
     } catch (err) {
       next(err)
     }
-  } else {
-    res.status(400).json("Username and password required")
-  }
+  // } else {
+  //   res.status(400).json("Username and password required")
+  // }
 })
 
 module.exports = router
