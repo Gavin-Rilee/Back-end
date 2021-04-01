@@ -38,22 +38,22 @@ router.post("/register", async (req, res, next) => {
 router.post("/login", async (req, res, next) => {
   const credentials = req.body
 
-  // if (isValidLogin(credentials)) {
+  if (isValidLogin(credentials)) {
     try {
       const { username, password } = credentials
       const user = await Users.findBy({ username })
       if (user && bcryptjs.compareSync(password, user.password)) {
         const token = generateToken(user)        
-        return res.status(200).json({ message: `Welcome, ${username}`, token, user })
+        return res.status(200).json({ message: `Welcome, ${username}`, token /*, user */})
       } else {
         res.json("Invalid username or password")
       }
     } catch (err) {
       next(err)
     }
-  // } else {
-  //   res.status(400).json("Username and password required")
-  // }
+  } else {
+    res.status(400).json("Username and password required")
+  }
 })
 
 module.exports = router
