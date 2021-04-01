@@ -25,7 +25,7 @@ router.post("/register", async (req, res, next) => {
           next(err)
         }
       } else {
-        res.status(400).json("Username taken")
+        res.status(400).json(credentials)
       }
     } catch (err) {
       next(err)
