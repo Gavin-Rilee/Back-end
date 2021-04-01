@@ -1,8 +1,19 @@
 const router = require("express").Router()
 const bcryptjs = require("bcryptjs")
-// const db = require("../../data/db-config")
-
 const Users = require("../users/model")
+
+const jwt = require('jsonwebtoken')
+const secret = process.env.JWT_SECRET
+
+const makeToken = (user) => {
+  const payload = {
+    subject: user.username,
+  };
+  const options = {
+    expiresIn: '1h',
+  };
+  return jwt.sign(payload, secret, options);
+};
 
 const { isValidRegister, isValidLogin, generateToken } = require("./auth-middleware")
 
@@ -43,8 +54,8 @@ router.post("/login", async (req, res, next) => {
       const { username, password } = credentials
       const user = await Users.findBy({ username })
       if (user && bcryptjs.compareSync(password, user.password)) {
-        const token = generateToken(user)        
-        return res.status(200).json({ message: `Welcome, ${username}`, secret: token /*, user */})
+        const token = makeToken(user)
+        return res.status(200).json({ message: `Welcome, ${username}`, token })
       } else {
         res.json("Invalid username or password")
       }
