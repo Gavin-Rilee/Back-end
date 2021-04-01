@@ -19,6 +19,34 @@ exports.seed = function(knex) {
         max_size: 30,
         instructor_username: 'Remy'
       },
+      {
+        class_id: 2, 
+        name: 'downward doggy',
+        type: 'yoga',
+        start_time: '11:11',
+        date: '4/05/2021',
+        duration: 90,
+        intensity_level: 'medium',
+        location: 'Indonesian Dojo',
+        attendees: 0,
+        // numRSVP: null,
+        max_size: 30,
+        instructor_username: 'Chance'
+      },
+      {
+        class_id: 3, 
+        name: 'Aquatic Zumba',
+        type: 'Senior Living',
+        start_time: '4AM',
+        date: 'Everyday',
+        duration: 35,
+        intensity_level: 'easy to medium',
+        location: 'YMCA Shallow Pool',
+        attendees: 0,
+        // numRSVP: null,
+        max_size: 30,
+        instructor_username: 'Declan'
+      },
       ]);
     });
 };
