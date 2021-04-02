@@ -22,7 +22,7 @@ router.get("/:id", valClassId, async (req, res, next) => {
   }
 })
 
-router.post("/", valClass, valInstructorUsername, async (req, res, next) => {
+router.post("/", /*valClass, valInstructorUsername,*/ async (req, res, next) => {
   try {
     const data = await Classes.add(req.body)
     return res.status(200).json(data)

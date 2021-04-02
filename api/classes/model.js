@@ -17,8 +17,8 @@ function findBy(filter) {
 }
 
 async function add(body) {
-  const [id] = await db("classes").insert(body, "class_id")
-  return db("classes").where("class_id", id).first()
+  const [lesson] = await db("classes").insert(body, "name")
+  return db("classes").where("name", lesson).first()
 }
 
 async function update(changes, id) {
