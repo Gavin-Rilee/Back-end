@@ -7,13 +7,13 @@ exports.seed = function(knex) {
       return knex('classes').insert([
       {
         class_id: 1, 
-        name: 'get swole lol',
-        type: 'grow cheeks',
-        start_time: '4:20',
+        name: 'get swole',
+        type: 'grow muscles',
+        start_time: '4:00',
         date: '6/09/2021',
         duration: 45,
-        intensity_level: 'so hard',
-        location: 'Willy Wonkas Chocolate Factory',
+        intensity_level: 'hard',
+        location: 'gym',
         attendees: 0,
         // numRSVP: null,
         max_size: 30,
@@ -21,7 +21,7 @@ exports.seed = function(knex) {
       },
       {
         class_id: 2, 
-        name: 'downward doggy',
+        name: 'yoga',
         type: 'yoga',
         start_time: '11:11',
         date: '4/05/2021',
